@@ -17,7 +17,12 @@ keys = [key for key in dicti.keys() if len(key) == size]
 # make list of keys with count of vowels equal to 4
 starters = [key for key in keys if count_vowels(key) == 4]
 print('Starters: ',starters)
+blklist = list(input("Input blacklisted words: "))
+print(blklist)
 guess = input("Guess a word (use re): ")
 #list all keys matching the regex
 matching_keys = [key for key in keys if re.match(guess, key)]
+#remove blacklisted alphabets
+for i in blklist:
+    matching_keys = [key for key in matching_keys if i not in key]
 print(matching_keys, end=", ")
