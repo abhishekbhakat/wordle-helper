@@ -19,10 +19,15 @@ starters = [key for key in keys if count_vowels(key) == 4]
 print('Starters: ',starters)
 blklist = list(input("Input blacklisted words: "))
 print(blklist)
+whtlist = list(input("Input whitelisted words: "))
+print(whtlist)
 guess = input("Guess a word (use re): ")
 #list all keys matching the regex
 matching_keys = [key for key in keys if re.match(guess, key)]
 #remove blacklisted alphabets
 for i in blklist:
     matching_keys = [key for key in matching_keys if i not in key]
+#only whiltelisted alphabets
+for i in whtlist:
+    matching_keys = [key for key in matching_keys if i in key]
 print(matching_keys, end=", ")
