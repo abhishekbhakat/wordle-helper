@@ -10,7 +10,6 @@ def count_vowels(word):
             count += 1
     return count
 
-
 dicti = json.load(open('words_dictionary.json'))
 #make list of all keys with size of 5
 keys = [key for key in dicti.keys() if len(key) == size]
@@ -30,4 +29,10 @@ for i in blklist:
 #only whiltelisted alphabets
 for i in whtlist:
     matching_keys = [key for key in matching_keys if i in key]
-print(matching_keys, end=", ")
+print(matching_keys)
+possible = open('possible_words.txt', 'r')
+possible_words = possible.read().splitlines()
+# select keys from possible words
+possible_keys = [key for key in matching_keys if key in possible_words]
+
+print("possible: ",possible_keys)
